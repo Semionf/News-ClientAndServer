@@ -1,0 +1,20 @@
+15/3/2023 - 15:28:11 - Runs Command with single value result
+15/3/2023 - 15:28:18 - Runs Command with single value result
+15/3/2023 - 15:28:32 - Runs Command with single value result
+15/3/2023 - 15:28:32 - Runs Command with single value result
+15/3/2023 - 15:28:32 - Runs Command with single value result
+15/3/2023 - 15:32:13 - Runs Command with single value result
+15/3/2023 - 15:37:53 - Runs Command with single value result
+15/3/2023 - 15:40:46 - Runs Command with single value result
+15/3/2023 - 15:42:53 - Runs Command with single value result
+15/3/2023 - 15:48:30 - Runs Command with single value result
+15/3/2023 - 15:48:31 - Runs Command with single value result
+15/3/2023 - 15:48:31 - Runs Command with single value result
+15/3/2023 - 15:48:31 - Runs Command with single value result
+15/3/2023 - 15:48:30 - Software has started.
+15/3/2023 - 15:48:31 - Data_SQL.ArticleDataSQL.GetCategoryLinks function has called
+15/3/2023 - 15:48:31 - Runs Command with single value result
+15/3/2023 - 15:48:31 - Getting category links from Sql
+15/3/2023 - 15:48:31 - Getting data from Sql
+15/3/2023 - 15:48:31 - Getting Data From DB
+15/3/2023 - 15:48:31 - Getting Category links from Sql
