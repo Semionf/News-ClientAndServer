@@ -1,4 +1,6 @@
-﻿using News.DAL;
+﻿using Google.Apis.Services;
+using Google.Apis.YouTube.v3;
+using News.DAL;
 using News.Data_SQL;
 using News.Models;
 using System;
@@ -25,7 +27,7 @@ namespace News.Entities
         // Stores newest articles per category, 1 of each (for each source)
         public Article[] NewestArticlePerCategory;
         // The suspention time between task execution
-        private const int TaskSuspendTime = 1000 * 60 * 60; // 1sec * 60 * 60 = 1 hour\
+        private const int TaskSuspendTime = 1000 * 60 * 60; // 1sec * 60 * 60 = 1 hour
 
         // Stores the Web Addresses for each category per source
         public Dictionary<int, string> WebAddressCategories { get; set; }
@@ -48,11 +50,10 @@ namespace News.Entities
                     Thread.Sleep(TaskSuspendTime);
                 }
             });
-
         }
 
         // Gets the articles from the XML
-        public async Task<List<Article>> GetArticles()
+        public async Task GetArticles()
         {
             try
             {
@@ -90,7 +91,6 @@ namespace News.Entities
                         CreateNewestArticleList(Articles);
                     }
                 }
-                return Articles; // must have return because of async and await
             }
             catch (Exception ex)
             {
@@ -235,7 +235,7 @@ namespace News.Entities
             {
                 if (Articles.Count > 0 && NewestArticlePerCategory[0] != null)
                 {
-                    for (int i = 0; i < NewestArticlePerCategory.Length ; i++)
+                    for (int i = 0; i < NewestArticlePerCategory.Length; i++)
                     {
                         for (int index = lastIndex; index < Articles.Count; index++)
                         {

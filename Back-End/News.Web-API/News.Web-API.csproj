@@ -13,10 +13,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Security.Permissions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MyProvider\Utilities\Utilities.csproj" />
+    <ProjectReference Include="..\..\..\MyProvider\Utilities\Utilities.csproj" />
     <ProjectReference Include="..\News.DAL\News.DAL.csproj" />
     <ProjectReference Include="..\News.Entities\News.Entities.csproj" />
     <ProjectReference Include="..\News.Model\News.Models.csproj" />

@@ -124,12 +124,12 @@ namespace News.Data_SQL
                 int index = 0;
                 while (reader.Read())
                 {
-
-                    Category category = new Category();
-                    category.ID = reader.GetInt32(0);
-                    category.Name = reader.GetString(1);
-                    category.Image = reader.GetString(2);
-
+                    Category category = new Category
+                    {
+                        ID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Image = reader.GetString(2)
+                    };
                     index++;
                     if (CategorisList.Count>1 && category.ID <= CategorisList.Last().ID && CategorisDict.Count == 0)
                     {

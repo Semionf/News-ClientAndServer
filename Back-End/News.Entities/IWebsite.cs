@@ -15,7 +15,7 @@ namespace News.Entities
         Dictionary<int, string> WebAddressCategories { get; set; }
         void FetchAndSaveData();
         string GetDescriptionText(XmlNode descriptionNode);
-        Task<List<Article>> GetArticles();
+        Task GetArticles();
         string GetImageSrc(XmlNode descriptionNode, XmlNode node);
         void CreateNewestArticleList(List<Article> Articles);
         string GetSource(string imgSource);

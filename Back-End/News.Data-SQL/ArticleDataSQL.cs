@@ -16,6 +16,37 @@ namespace News.Data_SQL
     {
         // ArticleDataSQL class inhert from BaseDataSQL
 
+        // Gets the Title of each article
+        public static string[] GetArticleTitles()
+        {
+            try
+            {
+                string SqlQuery = "select Title from Article";
+                Logger.AddToLog(new LogItem { Message = "RunCommandResultMultiValues has been called, getting Article Titles", Type = "Event" });
+                return Dal.RunCommandResultMultiValues(SqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Logger.AddToLog(new LogItem { exception = ex, Message = ex.Message, Type = "Exception" });
+                throw;
+            }
+        }
+
+        // Gets YouTube API Query and Key
+        public static string[] GetApi()
+        {
+            try
+            {
+                string SqlQuery = "select Value from Configuration where Name = 'YouTubeApiQuery' \r\nor Name = 'YouTubeApiKey'";
+                Logger.AddToLog(new LogItem { Message = "RunCommandResultMultiValues has been called, getting YouTube API values", Type = "Event" });
+                return Dal.RunCommandResultMultiValues(SqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Logger.AddToLog(new LogItem { exception = ex, Message = ex.Message, Type = "Exception" });
+                throw;
+            }
+        }
 
         // Saves article list to Sql
         public static void SaveArticlesToDB(List<Article> NewArticles)
