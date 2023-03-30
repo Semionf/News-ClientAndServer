@@ -45,6 +45,7 @@ namespace News.Entities
             {
                 while (true)
                 {
+                    Thread.Sleep(30000);
                     await GetVideoLinks();
                     Thread.Sleep(TaskSuspendTime);
                 }
@@ -67,7 +68,7 @@ namespace News.Entities
                     var youtubeService = new YouTubeService(new BaseClientService.Initializer()
                     {
                         ApiKey = YouTubeAPIs[1],
-                        ApplicationName = "NewsProj"
+                        ApplicationName = "NewsProject"
                     });
 
                     var searchListRequest = youtubeService.Search.List("snippet");
@@ -94,6 +95,7 @@ namespace News.Entities
                     YT_Videos.Add(new YT_Video { ArticleTitle = Title, Links = videos.ToArray() });
                     Console.WriteLine(String.Format("Videos:\n{0}\n", string.Join("\n", videos)));
                 }
+                Data_SQL.ArticleDataSQL.SaveVideosToDB(YT_Videos);
             }
             catch (Exception ex)
             {

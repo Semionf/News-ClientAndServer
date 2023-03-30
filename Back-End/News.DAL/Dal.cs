@@ -73,6 +73,41 @@ namespace News.DAL
         }
 
         // Saving articles to Sql
+        public static void SaveVideosToDB(string SqlQuery, List<YT_Video> Videos, string[] articleTitles)
+        {
+            int index;
+            try
+            {
+                Logger.AddToLog(new LogItem { Message = "Saving videos to Sql", Type = "Event" });
+                using (SqlConnection connection = new SqlConnection(ConnectionStringTest)) //ConfigDB.GetCString()
+                {
+                    // Adapter
+                    using (SqlCommand command = new SqlCommand(SqlQuery, connection))
+                    {
+                        connection.Open();
+                        //Reader
+                        for (index = Videos.Count - 1; index >= 0; index--)
+                        {
+                            foreach (string videolink in Videos[index].Links)
+                            {
+                                command.Parameters.AddWithValue("@ArticleID", Videos[index].ArticleID);
+                                command.Parameters.AddWithValue("@ArticleTitle", Videos[index].ArticleTitle);
+                                command.Parameters.AddWithValue("@VideoLink", videolink);
+                                command.Parameters.Clear();
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.AddToLog(new LogItem { exception = ex, Message = ex.Message, Type = "Exception" });
+                throw;
+            }
+        }
+
+        // Saving articles to Sql
         public static void SaveArticlesToDB(string SqlQuery, List<Article> articles)
         {
             int index;

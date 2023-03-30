@@ -16,6 +16,23 @@ namespace News.Data_SQL
     {
         // ArticleDataSQL class inhert from BaseDataSQL
 
+        // Saves YouTube videos list to Sql
+        public static void SaveVideosToDB(List<YT_Video> Videos)
+        {
+            try
+            {
+                string[] articleTitles = GetArticleTitles();
+                string SqlQuery = "INSERT INTO YouTubeVideoLinks VALUES (@ArticleID, @ArticleTitle, @Link)";
+                Logger.AddToLog(new LogItem { Message = "SaveVideosToDB has been called", Type = "Event" });
+                Dal.SaveVideosToDB(SqlQuery, Videos, articleTitles);
+            }
+            catch (Exception ex)
+            {
+                Logger.AddToLog(new LogItem { exception = ex, Message = ex.Message, Type = "Exception" });
+                throw;
+            }
+        }
+
         // Gets the Title of each article
         public static string[] GetArticleTitles()
         {
